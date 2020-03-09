@@ -217,7 +217,9 @@ class Main extends Component {
 					 	                   this.state.andamentoFiltrato[0].denominazione_regione : ''}
                       </Typography>
                       <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri</a></div>
-                      <br />
+                      <div>Le percentuali sono calcolate in base alle 24 ore precedenti</div>
+
+                    <br />
                       <br />
                       <FormControl className={classes.formControl}>
                           <InputLabel htmlFor="select-region">Seleziona Regione</InputLabel>

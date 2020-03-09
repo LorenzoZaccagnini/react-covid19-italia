@@ -190,7 +190,9 @@ class Main extends Component {
                         Andamento nazionale
                       </Typography>
                       <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri</a></div>
-                    </div>
+                      <div>Le percentuali sono calcolate in base alle 24 ore precedenti</div>
+
+                  </div>
                   </Paper>
                 </Grid>
               </Grid>
