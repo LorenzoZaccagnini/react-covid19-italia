@@ -20,7 +20,6 @@ const backgroundShape = require("../images/shape.svg");
 
 const styles = theme => ({
   root: {
-    marginTop: '100px',
     flexGrow: 1,
     backgroundColor: theme.palette.grey["100"],
     overflow: "hidden",
