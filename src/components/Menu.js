@@ -4,8 +4,8 @@ const Menu = [
     pathname: "/"
   },
   {
-    label: "Dashboard",
-    pathname: "/dashboard"
+    label: "Regione",
+    pathname: "/region"
   },
   {
     label: "Signup",

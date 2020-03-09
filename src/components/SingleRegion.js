@@ -8,6 +8,11 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import InstructionDialog from "./dialogs/InstructionDialog";
 import SwipeDialog from "./dialogs/SwipeDialog";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import Topbar from "./Topbar";
 
@@ -96,54 +101,71 @@ const styles = theme => ({
     position: "absolute",
     top: "40%",
     left: "40%"
-  }
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  positive: {
+    color: 'green'
+  },
+  negative: {
+    color: 'red'
+  },
+  card_value: {
+  fontWeight: 'bold'
+},
 });
 
 class Main extends Component {
   state = {
     learnMoredialog: false,
     getStartedDialog: false,
-    andamentoNazionaleObj: []
+    andamento: [],
+    andamentoFiltrato:[]
 
   };
 
-  async getAndamentoNazionale() {
+  async getAndamento() {
    try {
-     let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json');
+     let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json');
      let responseJson = await response.json();
      console.log(responseJson);
-     this.setState({andamentoNazionaleObj: responseJson})
+     this.setState({andamento: responseJson})
     } catch(error) {
      console.error(error);
    }
+ }
+
+ incPerc(array, index, key) {
+   const { classes } = this.props;
+  if (index < array.length - 1) {
+    const diff = array[index][key] - array[index + 1][key]
+    const diffPerc = diff / array[index][key] * 100
+    if (diffPerc > 0) {
+      return <span>
+          <span className={classes.card_value}>{array[index][key]}</span>
+          <span className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</span>
+        </span>
+    }
+    else {
+      return <span>
+          <span className={classes.card_value}>{array[index][key]}</span>
+          <span className={classes.negative}>▼{Math.round(diffPerc)}% {diff}</span>
+        </span>
+    }
+  }
+  else {
+    return <span className={classes.card_value}>{array[index][key]}</span>
   }
 
-  incPerc(array, index, key) {
-    const { classes } = this.props;
-   if (index < array.length - 1) {
-     const diff = array[index][key] - array[index + 1][key]
-     const diffPerc = diff / array[index][key] * 100
-     if (diffPerc > 0) {
-       return <span>
-           <span className={classes.card_value}>{array[index][key]}</span>
-           <span className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</span>
-         </span>
-     }
-     else {
-       return <span>
-           <span className={classes.card_value}>{array[index][key]}</span>
-           <span className={classes.negative}>▼{Math.round(diffPerc)}% {diff}</span>
-         </span>
-     }
-   }
-   else {
-     return <span className={classes.card_value}>{array[index][key]}</span>
-   }
-
-  }
+ }
 
   componentDidMount() {
-    this.getAndamentoNazionale();
+    this.getAndamento();
   }
 
   openDialog = event => {
@@ -162,13 +184,20 @@ class Main extends Component {
     this.setState({ getStartedDialog: false });
   };
 
+
+
+
   render() {
     const { classes } = this.props;
+
+
     return (
       <React.Fragment>
         <CssBaseline />
         <Topbar />
         <div className={classes.root}>
+
+
           <Grid container justify="center">
             <Grid
               spacing={4}
@@ -177,25 +206,65 @@ class Main extends Component {
               container
               className={classes.grid}
             >
-
-              <Grid container item xs={12}>
-                <Grid item xs={12}>
-                  <Paper className={classes.paper}>
-                    <div>
-                      <Typography
+            <Grid container item xs={12}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <div>
+                      <Typography color="primary" 
                         style={{ textTransform: "uppercase" }}
-                        color="primary"
-                        gutterBottom
-                      >
-                        Andamento nazionale
+                         gutterBottom>
+                        Andamento Regionale {this.state.andamentoFiltrato.length > 0 ?
+					 	                   this.state.andamentoFiltrato[0].denominazione_regione : ''}
                       </Typography>
                       <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri</a></div>
-                    </div>
-                  </Paper>
-                </Grid>
-              </Grid>
+                      <br />
+                      <br />
+                      <FormControl className={classes.formControl}>
+                          <InputLabel htmlFor="select-region">Seleziona Regione</InputLabel>
+                          <Select
+                            native
+                            onChange={(e)=>{
+                              console.log(e);
+                              const filtered_arr = this.state.andamento.filter(o => o.denominazione_regione === e.target.value);
 
-              {this.state.andamentoNazionaleObj.reverse().map((item, index, array) =>
+                              this.setState({
+                                andamentoFiltrato: filtered_arr
+                              });
+                              console.log(filtered_arr);
+                            }}
+                            inputProps={{
+                              name: 'regione',
+                              id: 'select-region',
+                            }}
+                          >
+                              <option>Abruzzo</option>
+                              <option>Basilicata</option>
+                              <option>Bolzano</option>
+                              <option>Campania</option>
+                              <option>Emilia Romagna</option>
+                              <option>Friuli Venezia Giulia</option>
+                              <option>Lazio</option>
+                              <option>Liguria</option>
+                              <option>Lombardia</option>
+                              <option>Marche</option>
+                              <option>Molise</option>
+                              <option>Piemonte</option>
+                              <option>Puglia</option>
+                              <option>Sardegna</option>
+                              <option>Sicilia</option>
+                              <option>Toscana</option>
+                              <option>Trento</option>
+                              <option>Umbria</option>
+                              <option>Valle Aosta</option>
+                              <option>Veneto</option>
+                          </Select>
+                        </FormControl>
+                  </div>
+                </Paper>
+              </Grid>
+            </Grid>
+
+              {this.state.andamentoFiltrato.reverse().map((item, index, array) =>
                 <Grid container item xs={12}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
