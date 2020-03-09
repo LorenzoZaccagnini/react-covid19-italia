@@ -308,7 +308,7 @@ export default function AllCities() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(22);
+  const [rowsPerPage, setRowsPerPage] = React.useState(150);
   const [andamento, setAndamento] = React.useState([]);
 
   useEffect(() => {
