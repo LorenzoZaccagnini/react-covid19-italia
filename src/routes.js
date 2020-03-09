@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, HashRouter, Switch } from 'react-router-dom'
 import SingleRegion from './components/SingleRegion'
 import AllRegions from './components/AllRegions'
-import Wizard from './components/Wizard'
-import Cards from './components/Cards'
+import AllCities from './components/AllCities'
 import Main from './components/Main'
 import Signup from './components/Signup'
 import ScrollToTop from './components/ScrollTop'
@@ -15,9 +14,7 @@ export default props => (
           <Route exact path='/' component={ Main } />
             <Route exact path='/region' component={ SingleRegion } />
           <Route exact path='/all_regions' component={ AllRegions } />c
-          <Route exact path='/signup' component={ Signup } />
-          <Route exact path='/wizard' component={ Wizard } />
-          <Route exact path='/cards' component={ Cards } />
+          <Route exact path='/all_cities' component={ AllCities } />c
         </Switch>
       </ScrollToTop>
     </HashRouter>

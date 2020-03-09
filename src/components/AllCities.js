@@ -53,57 +53,12 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     label: 'Regione',
-    id: 'denominazione_regione',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Ricoverati',
-    id: 'ricoverati_con_sintomi',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Intensivi',
-    id: 'terapia_intensiva',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Ospedalizzati',
-    id: 'totale_ospedalizzati',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Isolamento',
-    id: 'isolamento_domiciliare',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Positivi',
-    id: 'totale_attualmente_positivi',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Nuovi Positivi',
-    id: 'nuovi_attualmente_positivi',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Guariti',
-    id: 'dimessi_guariti',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Deceduti',
-    id: 'deceduti',
+    id: 'denominazione_provincia',
     numeric: true,
     disablePadding: false
   }, {
     label: 'Tot Casi',
     id: 'totale_casi',
-    numeric: true,
-    disablePadding: false
-  }, {
-    label: 'Tamponi',
-    id: 'tamponi',
     numeric: true,
     disablePadding: false
   }
@@ -198,7 +153,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Comparazione Regioni
+          Comparazione Province
         </Typography>
       )}
 
@@ -345,7 +300,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function AllRegions() {
+export default function AllCities() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -360,7 +315,7 @@ export default function AllRegions() {
   }, []);
 
   const getAndamento = async () => {
-      let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json');
+      let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json');
       let responseJson = await response.json();
       const filter_response = responseJson.filter(o => o.data === responseJson[responseJson.length - 1].data)
       setAndamento(filter_response)
@@ -374,7 +329,7 @@ export default function AllRegions() {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = andamento.map(n => n.denominazione_regione);
+      const newSelecteds = andamento.map(n => n.denominazione_provincia);
       setSelected(newSelecteds);
       return;
     }
@@ -446,13 +401,13 @@ export default function AllRegions() {
               {stableSort(andamento, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.denominazione_regione);
+                  const isItemSelected = isSelected(row.denominazione_provincia);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.denominazione_regione)}
+                      onClick={event => handleClick(event, row.denominazione_provincia)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -466,18 +421,9 @@ export default function AllRegions() {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.denominazione_regione}
+                        {row.denominazione_provincia}
                       </TableCell>
-                      <TableCell align="right">{row.ricoverati_con_sintomi}</TableCell>
-                      <TableCell align="right">{row.terapia_intensiva}</TableCell>
-                      <TableCell align="right">{row.totale_ospedalizzati}</TableCell>
-                      <TableCell align="right">{row.isolamento_domiciliare}</TableCell>
-                      <TableCell align="right">{row.totale_attualmente_positivi}</TableCell>
-                      <TableCell align="right">{row.nuovi_attualmente_positivi}</TableCell>
-                      <TableCell align="right">{row.dimessi_guariti}</TableCell>
-                      <TableCell align="right">{row.deceduti}</TableCell>
                       <TableCell align="right">{row.totale_casi}</TableCell>
-                      <TableCell align="right">{row.tamponi}</TableCell>
                     </TableRow>
                   );
                 })}
