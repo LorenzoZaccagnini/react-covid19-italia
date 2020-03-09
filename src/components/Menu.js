@@ -8,20 +8,12 @@ const Menu = [
     pathname: "/region"
   },
   {
-    label: "Signup",
-    pathname: "/signup"
-  },
-  {
-    label: "Wizard",
-    pathname: "/wizard"
-  },
-  {
-    label: "Cards",
-    pathname: "/cards"
+    label: "Tabella Regioni",
+    pathname: "/all_regions"
   },
   {
     label: "Github",
-    pathname: "https://github.com/alexanmtz/material-sense",
+    pathname: "https://github.com/LorenzoZaccagnini/react-covid19-italia",
     external: true
   }
 

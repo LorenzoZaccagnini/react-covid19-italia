@@ -142,7 +142,7 @@ class Main extends Component {
 
  incPerc(array, index, key) {
    const { classes } = this.props;
-  if (index < array.length - 1) {
+  if (index < array.length - 1 && array[index][key] !== 0) {
     const diff = array[index][key] - array[index + 1][key]
     const diffPerc = diff / array[index][key] * 100
     if (diffPerc > 0) {
@@ -210,7 +210,7 @@ class Main extends Component {
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
                   <div>
-                      <Typography color="primary" 
+                      <Typography color="primary"
                         style={{ textTransform: "uppercase" }}
                          gutterBottom>
                         Andamento Regionale {this.state.andamentoFiltrato.length > 0 ?
@@ -237,6 +237,7 @@ class Main extends Component {
                               id: 'select-region',
                             }}
                           >
+                              <option>Seleziona regione</option>
                               <option>Abruzzo</option>
                               <option>Basilicata</option>
                               <option>Bolzano</option>
