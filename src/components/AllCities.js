@@ -172,7 +172,7 @@ export default function AllCities() {
     options={{
       exportButton: true,
       grouping: true,
-      pageSize: 5
+      pageSize: 20
     }}
    />
       </Paper>
