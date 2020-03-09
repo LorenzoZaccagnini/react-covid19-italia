@@ -52,7 +52,7 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    label: 'Regione',
+    label: 'Provincia',
     id: 'denominazione_provincia',
     numeric: true,
     disablePadding: false
@@ -319,6 +319,7 @@ export default function AllCities() {
       let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json');
       let responseJson = await response.json();
       const filter_response = responseJson.filter(o => o.data === responseJson[responseJson.length - 1].data)
+      const filter_response = filter_response.filter(o => o.denominazione_provincia === "In fase di definizione/aggiornamento")
       setAndamento(filter_response)
   }
 
