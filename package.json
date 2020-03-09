@@ -1,7 +1,6 @@
 {
-  "name": "material-sense",
+  "name": "covid-italy",
   "version": "0.1.0",
-  "private": true,
   "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.1.1",

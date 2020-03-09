@@ -168,7 +168,7 @@ class Main extends Component {
       <React.Fragment>
         <CssBaseline />
         <Topbar />
-        <div className={classes.root}>
+        <div className={classes.root} >
           <Grid container justify="center">
             <Grid
               spacing={4}

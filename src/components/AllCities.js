@@ -185,6 +185,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
   },
   root: {
+    marginTop: '100px',
     flexGrow: 1,
     backgroundColor: theme.palette.grey["100"],
     overflow: "hidden",
