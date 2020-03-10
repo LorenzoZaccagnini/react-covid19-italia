@@ -142,8 +142,7 @@ export default function AllCities() {
 
   const [andamento, setAndamento] = React.useState([]);
   const [andamentoCompleto, setAndamentoCompleto] = React.useState([]);
-  const [intervalId, setintervalId] = React.useState(0);
-  const [last, setLast] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false);
 
   useEffect(() => {
     getAndamento();
@@ -177,15 +176,21 @@ export default function AllCities() {
     }
   }
 
+
   const handleClick = () => {
-    let i = 0;
-    let interval = setInterval(() => {
-      setAndamento(andamentoCompleto.filter(o => o.data === andamentoCompleto[i].data))
-      i += 21;
-      if ( i >= andamentoCompleto.length - 1) {
-        clearInterval(interval)
-      }
-    }, 500);
+    if (!playing) {
+      console.log(playing);
+      setPlaying(true)
+      let i = 0;
+      let interval = setInterval(() => {
+        setAndamento(andamentoCompleto.filter(o => o.data === andamentoCompleto[i].data))
+        i += 21;
+        if ( i >= andamentoCompleto.length - 1) {
+          clearInterval(interval)
+          setPlaying(false)
+        }
+      }, 500)
+    }
   }
 
 
@@ -212,7 +217,9 @@ export default function AllCities() {
                gutterBottom>
                  Mappa contagiati - {andamento[0].data}
             </Typography>
-            <Button variant="contained" onClick={handleClick}>Play</Button>
+            <Button variant="contained" onClick={handleClick}>
+            {playing ? 'PLAYING' : 'PLAY'}
+            </Button>
             </Paper>
             }
           </Grid>
@@ -544,6 +551,13 @@ export default function AllCities() {
     </Grid>
   </Grid>
     }
+    <Grid container item xs={12}>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          La mappa è stata realizzata basandosi su <a href="https://codepen.io/martinopalladini/pen/vKKMRE" target="_blank">questo progetto</a>
+        </Paper>
+      </Grid>
+    </Grid>
     </Grid>
     </Grid>
 
