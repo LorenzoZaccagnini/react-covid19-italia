@@ -1,0 +1,86 @@
+$color__map-region: white;
+$color__map-region--hover: #FFCCCB;
+$color__map-region--active: #95D70E;
+$color__map-region--disabled: #96AFDB;
+$color__terna: #2e5fb8;
+$ani__timing: .3s;
+$ani__ease: ease-out;
+body {
+  background-color: $color__terna;
+}
+
+.map__container {
+  margin: 2em auto;
+  width: 60%;
+}
+
+.map-region__shape {
+  fill: $color__map-region--disabled;
+  filter: url(#dropshadow);
+}
+
+.map-region__link {
+  .map-region__shape {
+    fill: $color__map-region;
+    cursor: pointer;
+    filter: url(#dropshadow--link);
+    transition: fill $ani__timing $ani__ease;
+  }
+  &:hover,
+  &:focus {
+    .map-region__shape,
+    .region__badge circle {
+      fill: $color__map-region--hover;
+    }
+    .map-region__shape {
+      filter: url(#dropshadow--hover);
+    }
+    .region__badge {
+      opacity: 1;
+    }
+  }
+  &.active {
+    .map-region__shape,
+    .region__badge circle {
+      fill: $color__map-region--active;
+    }
+    .region__badge {
+      opacity: 1;
+    }
+  }
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus {
+    .map-region__shape {
+      fill: $color__map-region--disabled;
+      filter: url(#dropshadow);
+    }
+    .map-region__shape,
+    circle,
+    text {
+      cursor: default;
+    }
+    .region__badge {
+      opacity: 0;
+    }
+  }
+}
+
+.region__badge {
+  opacity: 1;
+  transition: opacity $ani__timing $ani__ease;
+  // se si vuole provare la trasparenza delle regioni non selezionate
+  circle {
+    r: 16;
+    fill: $color__map-region;
+    stroke: darken($color__terna, 20);
+    stroke-width: 2;
+  }
+  text {
+    fill: darken($color__terna, 20);
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    text-anchor: middle;
+  }
+}

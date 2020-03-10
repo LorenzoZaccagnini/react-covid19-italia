@@ -6,6 +6,7 @@ import AllCities from './components/AllCities'
 import Main from './components/Main'
 import Signup from './components/Signup'
 import ScrollToTop from './components/ScrollTop'
+import RegionsMap from './components/RegionsMap'
 
 export default props => (
     <HashRouter>
@@ -13,8 +14,9 @@ export default props => (
         <Switch>
           <Route exact path='/' component={ Main } />
             <Route exact path='/region' component={ SingleRegion } />
-          <Route exact path='/all_regions' component={ AllRegions } />c
-          <Route exact path='/all_cities' component={ AllCities } />c
+          <Route exact path='/all_regions' component={ AllRegions } />
+          <Route exact path='/all_cities' component={ AllCities } />
+          <Route exact path='/regions_map' component={ RegionsMap } />c
         </Switch>
       </ScrollToTop>
     </HashRouter>

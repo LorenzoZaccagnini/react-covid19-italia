@@ -243,6 +243,7 @@ class Main extends Component {
                               <option>Abruzzo</option>
                               <option>Basilicata</option>
                               <option>Bolzano</option>
+                              <option>Calabria</option>
                               <option>Campania</option>
                               <option>Emilia Romagna</option>
                               <option>Friuli Venezia Giulia</option>

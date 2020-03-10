@@ -24,7 +24,7 @@ const styles = theme => ({
     paddingBottom: 200
   },
   grid: {
-    width: 1200,
+    maxwidth: 1200,
     marginTop: 40,
     [theme.breakpoints.down("sm")]: {
       width: "calc(100% - 20px)"
@@ -178,7 +178,7 @@ class Main extends Component {
               className={classes.grid}
             >
 
-              <Grid container item xs={12}>
+              <Grid container item xs={10}>
                 <Grid item xs={12}>
                   <Paper className={classes.paper}>
                     <div>
@@ -198,7 +198,7 @@ class Main extends Component {
               </Grid>
 
               {this.state.andamentoNazionaleObj.reverse().map((item, index, array) =>
-                <Grid container item xs={12}>
+                <Grid container item xs={10}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
                       <div>

@@ -16,6 +16,10 @@ const Menu = [
     pathname: "/all_cities"
   },
   {
+    label: "Mappa Regioni",
+    pathname: "/regions_map"
+  },
+  {
     label: "Github",
     pathname: "https://github.com/LorenzoZaccagnini/react-covid19-italia",
     external: true
