@@ -146,12 +146,10 @@ class Main extends Component {
     const diff = array[index][key] - array[index + 1][key]
     const diffPerc = diff / array[index][key] * 100
     if (diffPerc > 0) {
-      return <Grid container item xs={6}>
-                <Grid item xs={6}>
-                    <div className={classes.card_value}>{array[index][key]}</div>
-                    <div className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</div>
-                </Grid>
-            </Grid>
+      return <span>
+               <span className={classes.card_value}>{array[index][key]}</span>
+               <span className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</span>
+             </span>
     }
     else {
       return <span>
