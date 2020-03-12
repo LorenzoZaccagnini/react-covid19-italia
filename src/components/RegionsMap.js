@@ -590,7 +590,7 @@ export default function AllCities() {
     </Grid>
   </Grid>
     }
-    <Grid container item xs={12}>
+    <Grid container item xs={10}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           La mappa è stata realizzata basandosi su <a href="https://codepen.io/martinopalladini/pen/vKKMRE" target="_blank">questo progetto</a>
