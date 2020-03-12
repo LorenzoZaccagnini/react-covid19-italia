@@ -213,7 +213,7 @@ export default function AllCities() {
         container
         className={classes.grid}
       >
-        <Grid container item xs={12}>
+        <Grid container item xs={10}>
           <Grid item xs={12}>
           { andamento.length > 0 &&
 
