@@ -146,10 +146,12 @@ class Main extends Component {
     const diff = array[index][key] - array[index + 1][key]
     const diffPerc = diff / array[index][key] * 100
     if (diffPerc > 0) {
-      return <span>
-          <span className={classes.card_value}>{array[index][key]}</span>
-          <span className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</span>
-        </span>
+      return <Grid container item xs={6}>
+                <Grid item xs={6}>
+                    <div className={classes.card_value}>{array[index][key]}</div>
+                    <div className={classes.positive}>▲{Math.round(diffPerc)}% +{diff}</div>
+                </Grid>
+            </Grid>
     }
     else {
       return <span>
@@ -206,7 +208,7 @@ class Main extends Component {
               container
               className={classes.grid}
             >
-            <Grid container item xs={12}>
+            <Grid container item xs={10}>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
                   <div>
@@ -269,24 +271,25 @@ class Main extends Component {
             </Grid>
 
               {this.state.andamentoFiltrato.reverse().map((item, index, array) =>
-                <Grid container item xs={12}>
+                <Grid container item xs={10}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
                       <div>
                           <Typography color="secondary" gutterBottom>
                             {item.data.slice(0, 10)}
                           </Typography>
-                        <Typography variant="body1" gutterBottom>Ricov sintomatici: {this.incPerc(array, index, "ricoverati_con_sintomi")}</Typography>
-                        <Typography variant="body1" gutterBottom>Terapia intensiva: {this.incPerc(array, index, "terapia_intensiva")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot Ospedalizzati: {this.incPerc(array, index, "totale_ospedalizzati")}</Typography>
-                        <Typography variant="body1" gutterBottom>Domiciliare: {this.incPerc(array, index, "isolamento_domiciliare")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot positivi: {this.incPerc(array, index, "totale_attualmente_positivi")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot nuovi positivi: {this.incPerc(array, index, "nuovi_attualmente_positivi")}</Typography>
-                        <Typography variant="body1" gutterBottom>Dimessi guariti: {this.incPerc(array, index, "dimessi_guariti")}</Typography>
-                        <Typography variant="body1" gutterBottom>Deceduti: {this.incPerc(array, index, "deceduti")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot casi: {this.incPerc(array, index, "totale_casi")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tamponi: {this.incPerc(array, index, "tamponi")}</Typography>
-                      </div>
+
+                            <Typography variant="body1" gutterBottom>Ricov sintomatici: {this.incPerc(array, index, "ricoverati_con_sintomi")}</Typography>
+                            <Typography variant="body1" gutterBottom>Terapia intensiva: {this.incPerc(array, index, "terapia_intensiva")}</Typography>
+                            <Typography variant="body1" gutterBottom>Tot Ospedalizzati: {this.incPerc(array, index, "totale_ospedalizzati")}</Typography>
+                            <Typography variant="body1" gutterBottom>Domiciliare: {this.incPerc(array, index, "isolamento_domiciliare")}</Typography>
+                            <Typography variant="body1" gutterBottom>Tot positivi: {this.incPerc(array, index, "totale_attualmente_positivi")}</Typography>
+                            <Typography variant="body1" gutterBottom>Tot nuovi positivi: {this.incPerc(array, index, "nuovi_attualmente_positivi")}</Typography>
+                            <Typography variant="body1" gutterBottom>Dimessi guariti: {this.incPerc(array, index, "dimessi_guariti")}</Typography>
+                            <Typography variant="body1" gutterBottom>Deceduti: {this.incPerc(array, index, "deceduti")}</Typography>
+                            <Typography variant="body1" gutterBottom>Tot casi: {this.incPerc(array, index, "totale_casi")}</Typography>
+                            <Typography variant="body1" gutterBottom>Tamponi: {this.incPerc(array, index, "tamponi")}</Typography>
+                    </div>
                     </Paper>
                   </Grid>
                 </Grid>

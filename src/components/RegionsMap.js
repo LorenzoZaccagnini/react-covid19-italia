@@ -223,7 +223,7 @@ export default function AllCities() {
                gutterBottom>
                  {andamento[0].data}
             </Typography>
-                <Grid container item xs={12}>
+                <Grid container item xs={10}>
                   <Grid item xs={12}
                     alignItems="center"
                     justify="flex-start"
@@ -265,7 +265,7 @@ export default function AllCities() {
         </Grid>
 
       { andamento.length > 0 &&
-        <Grid container item xs={12}>
+        <Grid container item xs={10}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <div>
