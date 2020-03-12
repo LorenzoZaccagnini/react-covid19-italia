@@ -1,3 +1,9 @@
+
+# Covid Italia Project
+
+This project is open source and free, live on [https://coviditalia.netlify.com/](https://coviditalia.netlify.com/). It allows you to consult national, regional and provincial **official** data relating to the COVID-19 emergency in Italy. It's automatically updated from the [official repository](https://github.com/pcm-dpc/COVID-19) made by [**La Presidenza del Consiglio dei Ministri**](http://www.governo.it/it/la-presidenza-del-consiglio-dei-ministri) every time new data is released. The development of the website follows a responsive perspective, to allow its use on any type of display.
+
+
 ### Using official data from 
 https://github.com/pcm-dpc/COVID-19
 
@@ -65,4 +71,10 @@ _the 2222 port intend to make work on Azure websites as container for default, c
 
 ### Publish at Github pages
 `yarn deploy`
+
+## Contributors ✨
+Thanks goes to these wonderful people:
+
+* [Lorenzo Zaccagnini](https://github.com/LorenzoZaccagnini) [LinkedIn](https://it.linkedin.com/in/lorenzo-zaccagnini)
+* [Elisa Romondia](https://github.com/elisaromondia) [LinkedIn](https://fr.linkedin.com/in/elisa-romondia)
 
