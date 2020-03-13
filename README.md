@@ -11,10 +11,10 @@ https://github.com/pcm-dpc/COVID-19
 https://github.com/alexanmtz/material-sense
 
 
-## React Material UI template - Material Sense
+### React Material UI template - Material Sense
 [material ui](https://material-ui.com/)
 
-### Available Scripts
+## Available Scripts
 
 In the project directory, you can run:
 
