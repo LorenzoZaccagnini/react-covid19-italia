@@ -10,6 +10,8 @@ https://github.com/pcm-dpc/COVID-19
 ### based on material-sense
 https://github.com/alexanmtz/material-sense
 
+### Animated map based on this project
+https://codepen.io/martinopalladini/pen/vKKMRE
 
 ### React Material UI template - Material Sense
 [material ui](https://material-ui.com/)
