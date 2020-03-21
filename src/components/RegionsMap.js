@@ -143,6 +143,9 @@ const useStyles = makeStyles(theme => ({
     top: 20,
     width: 1,
   },
+  button:{
+    marginLeft: 10
+  }
 }));
 
 export default function AllCities() {
@@ -271,7 +274,7 @@ export default function AllCities() {
             <Button startIcon={playing ? <PauseIcon/> : <PlayArrowIcon/> }  variant="contained" onClick={handleClick}>
             {playing ? 'PAUSE' : 'PLAY'}
             </Button>
-            <Button startIcon={<StopIcon/>} color="secondary" disabled={count === 0} variant="contained" onClick={resetHandle}>
+            <Button startIcon={<StopIcon/>} color="secondary" disabled={count === 0} variant="contained" className={classes.button} onClick={resetHandle}>
               Stop
             </Button>
           </Grid>
