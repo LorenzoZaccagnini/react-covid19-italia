@@ -210,11 +210,7 @@ export default function AllCities() {
 
 
   const handleClick = () => {
-    if (!playing) {
-      setPlaying(true)
-    } else {
-      setPlaying(false)
-    }
+    setPlaying( playing => !playing)
   }
 
 
