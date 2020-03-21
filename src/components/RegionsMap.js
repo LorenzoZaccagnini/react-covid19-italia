@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -12,6 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
+import StopIcon from '@material-ui/icons/Stop';
 import "./styles/Map.scss";
 
 
@@ -149,6 +152,8 @@ export default function AllCities() {
   const [andamentoCompleto, setAndamentoCompleto] = React.useState([]);
   const [playing, setPlaying] = React.useState(false);
   const [category, setCategory] = React.useState('totale_casi');
+  const [count, setCount] = React.useState(0);
+
 
   useEffect(() => {
     getAndamento();
@@ -162,6 +167,12 @@ export default function AllCities() {
       console.log(filter_response);
       setAndamentoCompleto(responseJson)
   }
+
+  const resetHandle = useCallback(() => {
+    setPlaying(false)
+    setCount(0)
+    getAndamento();
+  }, [])
 
 
   const catColor = (val) => {
@@ -183,19 +194,26 @@ export default function AllCities() {
   }
 
 
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        if (playing) {
+          if (count >= andamentoCompleto.length - 1) {
+            setPlaying(false)
+          } else {
+            setAndamento(andamentoCompleto.filter(o => o.data === andamentoCompleto[count].data))
+            setCount(count => count + 21);
+          }
+        }
+      }, 500);
+    return () => clearTimeout(timer);
+  }, [playing, count, andamentoCompleto]);
+
+
   const handleClick = () => {
     if (!playing) {
-      console.log(playing);
       setPlaying(true)
-      let i = 0;
-      let interval = setInterval(() => {
-        setAndamento(andamentoCompleto.filter(o => o.data === andamentoCompleto[i].data))
-        i += 21;
-        if ( i >= andamentoCompleto.length - 1) {
-          clearInterval(interval)
-          setPlaying(false)
-        }
-      }, 500)
+    } else {
+      setPlaying(false)
     }
   }
 
@@ -254,8 +272,11 @@ export default function AllCities() {
                           <option value="tamponi">Tamponi</option>
                     </Select>
                   </FormControl>
-            <Button variant="contained" onClick={handleClick}>
-            {playing ? 'PLAYING' : 'PLAY'}
+            <Button startIcon={playing ? <PauseIcon/> : <PlayArrowIcon/> }  variant="contained" onClick={handleClick}>
+            {playing ? 'PAUSE' : 'PLAY'}
+            </Button>
+            <Button startIcon={<StopIcon/>} color="secondary" disabled={count === 0} variant="contained" onClick={resetHandle}>
+              Stop
             </Button>
           </Grid>
         </Grid>
