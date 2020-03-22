@@ -84,6 +84,7 @@ Thanks goes to these wonderful people:
   <tr>
     <td align="center"><a href="https://it.linkedin.com/in/lorenzo-zaccagnini"><img src="https://avatars2.githubusercontent.com/u/18169376?s=400&u=697698bf9973ab54be5b8eadbf7d1c7c083d23e6&v=4" width="100px;" alt=""/><br /><sub><b>Lorenzo Zaccagnini</b></sub></a><br /><a href="https://it.linkedin.com/in/lorenzo-zaccagnini" title="LinkedIn">💬</a> <a href="https://github.com/LorenzoZaccagnini" title="GitHub">📖</a></td>
      <td align="center"><a href=" "><img src="https://avatars1.githubusercontent.com/u/22495052?s=400&u=bfa41aa3de72d097e172add801860178358e9362&v=4" width="100px;" alt=""/><br /><sub><b>Elisa Romondia</b></sub></a><br /><a href="https://fr.linkedin.com/in/elisa-romondia" title="LinkedIn">💬</a> <a href="https://github.com/elisaromondia" title="GitHub">📖</a></td>
+     <td align="center"><a href=" "><img src="https://avatars2.githubusercontent.com/u/12563425?s=460&u=d9a19799e82bd93c90bdcf2ee165631edea8d28d&v=4" width="100px;" alt=""/><br /><sub><b>Aldo Vandus</b></sub></a><br /><a href="https://www.linkedin.com/in/aldo-vandus/" title="LinkedIn">💬</a> <a href="https://github.com/aldovandus" title="GitHub">📖</a></td>
    </tr>
 </table>
 <!-- markdownlint-enable -->
