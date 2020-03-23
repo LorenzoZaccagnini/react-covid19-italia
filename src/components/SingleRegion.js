@@ -5,16 +5,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import InstructionDialog from "./dialogs/InstructionDialog";
 import SwipeDialog from "./dialogs/SwipeDialog";
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import Topbar from "./Topbar";
 
 const backgroundShape = require("../images/shape.svg");
 
@@ -108,16 +104,7 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
-  },
-  positive: {
-    color: 'green'
-  },
-  negative: {
-    color: 'red'
-  },
-  card_value: {
-  fontWeight: 'bold'
-},
+  }
 });
 
 class Main extends Component {
@@ -194,10 +181,7 @@ class Main extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Topbar />
         <div className={classes.root}>
-
-
           <Grid container justify="center">
             <Grid
               spacing={4}
@@ -216,7 +200,7 @@ class Main extends Component {
                         Andamento Regionale {this.state.andamentoFiltrato.length > 0 ?
 					 	                   this.state.andamentoFiltrato[0].denominazione_regione : ''}
                       </Typography>
-                      <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri</a></div>
+                      <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="blank">Presidenza del Consiglio dei Ministri</a></div>
                       <div>Le percentuali sono calcolate in base alle 24 ore precedenti</div>
 
                     <br />

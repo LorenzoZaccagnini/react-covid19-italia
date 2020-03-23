@@ -5,11 +5,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import InstructionDialog from "./dialogs/InstructionDialog";
 import SwipeDialog from "./dialogs/SwipeDialog";
 
-import Topbar from "./Topbar";
 
 const backgroundShape = require("../images/shape.svg");
 
@@ -167,7 +165,6 @@ class Main extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Topbar />
         <div className={classes.root} >
           <Grid container justify="center">
             <Grid
@@ -189,7 +186,7 @@ class Main extends Component {
                       >
                         Andamento nazionale
                       </Typography>
-                      <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri</a></div>
+                      <div> Dati presi dalla repository della <a href="https://github.com/pcm-dpc/COVID-19" target="blank">Presidenza del Consiglio dei Ministri</a></div>
                       <div>Le percentuali sono calcolate in base alle 24 ore precedenti</div>
 
                   </div>

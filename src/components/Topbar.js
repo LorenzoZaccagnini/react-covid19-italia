@@ -118,9 +118,32 @@ class Topbar extends Component {
     }
   };
 
+  
+
+
+
   render() {
     const { classes } = this.props;
 
+    const tabs = Menu.map((item, index) => (
+      <Tab
+        key={index}
+        component={item.external ? MaterialLink : Link}
+        href={item.external ? item.pathname : null}
+        to={
+          item.external
+            ? null
+            : {
+                pathname: item.pathname,
+                search: this.props.location.search,
+
+              }
+        }
+        classes={{ root: classes.tabItem }}
+        label={item.label}
+      />
+    ))
+    console.log('test')
     return (
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
@@ -134,6 +157,7 @@ class Topbar extends Component {
                   </Link>
                 </Typography>
               </div>
+             
               {!this.props.noTabs && (
                 <React.Fragment>
 
@@ -182,23 +206,8 @@ class Topbar extends Component {
                       textColor="primary"
                       onChange={this.handleChange}
                     >
-                      {Menu.map((item, index) => (
-                        <Tab
-                          key={index}
-                          component={item.external ? MaterialLink : Link}
-                          href={item.external ? item.pathname : null}
-                          to={
-                            item.external
-                              ? null
-                              : {
-                                  pathname: item.pathname,
-                                  search: this.props.location.search
-                                }
-                          }
-                          classes={{ root: classes.tabItem }}
-                          label={item.label}
-                        />
-                      ))}
+                      {tabs}
+                     
                     </Tabs>
                   </div>
                 </React.Fragment>

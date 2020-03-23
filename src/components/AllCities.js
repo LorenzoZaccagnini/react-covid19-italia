@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types';
+import React, { useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Topbar from "./Topbar";
 
 
 
 
 
 
-
-const backgroundShape = require("../images/shape.svg");
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-  },
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.grey["100"],
-    overflow: "hidden",
-    background: `url(${backgroundShape}) no-repeat`,
-    backgroundSize: "cover",
-    backgroundPosition: "0 400px",
-    paddingBottom: 200
   },
   grid: {
     width: 1200,
@@ -109,15 +95,6 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-  positive: {
-    color: 'green'
-  },
-  negative: {
-    color: 'red'
-  },
-  card_value: {
-  fontWeight: 'bold'
-},
 
   table: {
     minWidth: 750,
@@ -137,7 +114,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function AllCities() {
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [state] = React.useState({
     columns: [
       { title: 'Provincia', field: 'denominazione_provincia' },
       { title: 'Regione', field: 'denominazione_regione' },
@@ -161,7 +138,6 @@ export default function AllCities() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Topbar />
     <div className={classes.root}>
       { andamento.length > 0 &&
       <Paper className={classes.paper}>
