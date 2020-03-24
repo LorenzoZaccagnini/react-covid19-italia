@@ -220,7 +220,6 @@ export default function AllCities() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Topbar />
     <div className={classes.root}>
     <Grid container justify="center">
       <Grid

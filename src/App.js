@@ -27,11 +27,9 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
     return (
-      <div>
-        <ThemeProvider theme={theme}>
-          <Routes />
-        </ThemeProvider>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
     );
   }
 }
