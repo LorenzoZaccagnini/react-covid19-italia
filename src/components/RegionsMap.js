@@ -622,7 +622,7 @@ export default function AllCities() {
           <Grid item xs={12}>
             <div className='my-legend_container'>
                 <div className='my-legend'>
-                    <div className='legend-title'>Leggenda</div>
+                    <div className='legend-title'>Legenda</div>
                     <div className='legend-scale-container'>
                         <div className='legend-scale'>
                             <ul className='legend-labels'>
