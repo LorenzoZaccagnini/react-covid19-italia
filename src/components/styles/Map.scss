@@ -1,5 +1,5 @@
 $color__map-region: white;
-$color__map-region--hover: #FFCCCB;
+$color__map-region--hover: #e6faff;
 $color__map-region--active: #95D70E;
 $color__map-region--disabled: #96AFDB;
 $color__terna: #2e5fb8;
@@ -10,8 +10,9 @@ body {
 }
 
 .map__container {
-  margin: 2em auto;
-  width: 60%;
+  margin: 1em auto;
+  width: 80%;
+  padding-bottom: 5em;
 }
 
 .map-region__shape {
@@ -79,8 +80,75 @@ body {
   text {
     fill: darken($color__terna, 20);
     font-family: sans-serif;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 900;
     text-anchor: middle;
   }
 }
+
+.map-title {
+    text-align: left;
+    margin-bottom: 1em;
+    font-weight: bold;
+    font-size: 1em;
+    }
+
+
+.my-legend_container {
+  margin: 1em auto;
+  width: 80%;
+}
+
+
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 0.1em;
+    font-weight: bold;
+    font-size: 1em;
+    }
+
+
+  .my-legend .legend-scale ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    }
+
+  .my-legend .legend-scale ul li {
+    display: block;
+    width: 10em;
+    text-align: center;
+    font-size: 0.7em;
+    list-style: none;
+    }
+
+  .legend-labels {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .my-legend ul.legend-labels li span {
+    display: block;
+    min-height: 3vh;
+    width: 10em;
+    }
+
+    .my-legend ul.legend-labels li text {
+      display: block;
+      min-height: 3vh;
+      width: 10em;
+      font-size: 3em;
+
+      }
+  .my-legend .legend-source {
+    font-size: 0.8em;
+    color: #999;
+    clear: both;
+    text-align: left;
+    font-weight: bold;
+
+    }
+  .my-legend a {
+    color: #777;
+    }

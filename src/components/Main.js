@@ -206,8 +206,8 @@ class Main extends Component {
                         <Typography variant="body1" gutterBottom>Terapia intensiva: {this.incPerc(array, index, "terapia_intensiva")}</Typography>
                         <Typography variant="body1" gutterBottom>Tot Ospedalizzati: {this.incPerc(array, index, "totale_ospedalizzati")}</Typography>
                         <Typography variant="body1" gutterBottom>Domiciliare: {this.incPerc(array, index, "isolamento_domiciliare")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot positivi: {this.incPerc(array, index, "totale_attualmente_positivi")}</Typography>
-                        <Typography variant="body1" gutterBottom>Tot nuovi positivi: {this.incPerc(array, index, "nuovi_attualmente_positivi")}</Typography>
+                        <Typography variant="body1" gutterBottom>Tot positivi: {this.incPerc(array, index, "totale_positivi")}</Typography>
+                        <Typography variant="body1" gutterBottom>Tot nuovi positivi: {this.incPerc(array, index, "nuovi_positivi")}</Typography>
                         <Typography variant="body1" gutterBottom>Dimessi guariti: {this.incPerc(array, index, "dimessi_guariti")}</Typography>
                         <Typography variant="body1" gutterBottom>Deceduti: {this.incPerc(array, index, "deceduti")}</Typography>
                         <Typography variant="body1" gutterBottom>Tot casi: {this.incPerc(array, index, "totale_casi")}</Typography>

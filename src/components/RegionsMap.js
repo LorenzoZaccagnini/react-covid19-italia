@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
   grid: {
     width: 1200,
-    marginTop: 40,
+    marginTop: 20,
     [theme.breakpoints.down("sm")]: {
       width: "calc(100% - 20px)"
     }
@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   box: {
-    marginBottom: 40,
+    marginBottom: 20,
     height: 65
   },
   positive: {
@@ -144,7 +144,9 @@ const useStyles = makeStyles(theme => ({
     width: 1,
   },
   button:{
-    marginLeft: 10
+    marginLeft: 2,
+    marginRight: 2,
+    minWidth: 80
   }
 }));
 
@@ -180,19 +182,24 @@ export default function AllCities() {
 
   const catColor = (val) => {
     if (val <= 10) {
-      return '#eeeeee';
+      return '#F1EEF6';
     }
     else if (val > 10 && val <= 100) {
-      return '#f26161';
+      return '#BDC9E1';
     }
     else if (val > 100 && val <= 500) {
-      return '#f03939';
+      return '#74A9CF';
     }
     else if (val > 500 && val <= 3000) {
-      return '#ea0909';
+      return '#2B8CBE';
     }
-    else if (val > 3000) {
-      return '#9a0707';
+
+    else if (val > 3000 && val <= 10000) {
+    return '#045A8D';
+    }
+
+    else if (val > 10000) {
+      return '#003c5e';
     }
   }
 
@@ -229,6 +236,9 @@ export default function AllCities() {
         container
         className={classes.grid}
       >
+
+
+
         <Grid container item xs={10}>
           <Grid item xs={12}>
           { andamento.length > 0 &&
@@ -245,6 +255,8 @@ export default function AllCities() {
                     justify="flex-start"
                     container
                     >
+
+
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="select-region">Seleziona campo</InputLabel>
                     <Select
@@ -270,12 +282,11 @@ export default function AllCities() {
                           <option value="tamponi">Tamponi</option>
                     </Select>
                   </FormControl>
-            <Button startIcon={playing ? <PauseIcon/> : <PlayArrowIcon/> }  variant="contained" onClick={handleClick}>
-            {playing ? 'PAUSE' : 'PLAY'}
+            <Button startIcon={playing ? <PauseIcon/> : <PlayArrowIcon/> }  className={classes.button} variant="contained" onClick={handleClick}>
+            {playing ? 'pause' :'play'}
             </Button>
             <Button startIcon={<StopIcon/>} color="secondary" disabled={count === 0} variant="contained" className={classes.button} onClick={resetHandle}>
-              Stop
-            </Button>
+          stop  </Button>
           </Grid>
         </Grid>
             </Paper>
@@ -292,6 +303,9 @@ export default function AllCities() {
 
 
       <div className="map__container">
+
+      <div className='map-title'>Mappa Regionale Interattiva</div>
+
         <svg version="1.1" className="map__italy" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 418.966 469.31" enable-background="new 0 0 418.966 469.31" xmlSpace="preserve">
 
           <defs>
@@ -602,9 +616,38 @@ export default function AllCities() {
           <text x="74" y="310"> {andamento[14][category]} </text>
         </g>
       	</a>
-      </svg>
-      </div>
-      </div>
+        </svg>
+
+        <Grid container item xs={12}>
+          <Grid item xs={12}>
+            <div className='my-legend_container'>
+                <div className='my-legend'>
+                    <div className='legend-title'>Leggenda</div>
+                    <div className='legend-scale-container'>
+                        <div className='legend-scale'>
+                            <ul className='legend-labels'>
+                                <li><span style={{background: "#F1EEF6"}}></span>0-10</li>
+                                <li><span style={{background: "#BDC9E1"}}></span>10-100</li>
+                                <li><span style={{background: "#74A9CF"}}></span>100-500</li>
+                                <li><span style={{background: "#2B8CBE"}}></span>500-3k</li>
+                                <li><span style={{background: "#045A8D"}}></span>3k-10k</li>
+                                <li><span style={{background: "#003c5e"}}></span>oltre 10k</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class='legend-source'>Fonte Dati: <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Repository della Presidenza del Consiglio dei Ministri</a></div>
+                </div>
+            </div>
+          </Grid>
+        </Grid>
+
+</div>
+</div>
+
+
+
       </Paper>
     </Grid>
   </Grid>
@@ -613,6 +656,7 @@ export default function AllCities() {
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           La mappa è stata realizzata basandosi su <a href="https://codepen.io/martinopalladini/pen/vKKMRE" target="_blank">questo progetto</a>
+
         </Paper>
       </Grid>
     </Grid>
