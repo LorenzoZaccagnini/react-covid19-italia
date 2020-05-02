@@ -275,8 +275,8 @@ export default function AllCities() {
                           <option value="terapia_intensiva">Intensivi</option>
                           <option value="totale_ospedalizzati">Ospedalizzati</option>
                           <option value="isolamento_domiciliare">Isolamento</option>
-                          <option value="totale_attualmente_positivi">Positivi</option>
-                          <option value="nuovi_attualmente_positivi">Nuovi Positivi</option>
+                          <option value="totale_positivi">Positivi</option>
+                          <option value="nuovi_positivi">Nuovi Positivi</option>
                           <option value="dimessi_guariti">Guariti</option>
                           <option value="deceduti">Deceduti</option>
                           <option value="tamponi">Tamponi</option>
