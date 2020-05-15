@@ -226,10 +226,10 @@ class Main extends Component {
                               <option>Seleziona regione</option>
                               <option>Abruzzo</option>
                               <option>Basilicata</option>
-                              <option>Bolzano</option>
+                              <option>P.A. Bolzano</option>
                               <option>Calabria</option>
                               <option>Campania</option>
-                              <option>Emilia Romagna</option>
+                              <option>Emilia-Romagna</option>
                               <option>Friuli Venezia Giulia</option>
                               <option>Lazio</option>
                               <option>Liguria</option>
@@ -241,7 +241,7 @@ class Main extends Component {
                               <option>Sardegna</option>
                               <option>Sicilia</option>
                               <option>Toscana</option>
-                              <option>Trento</option>
+                              <option>P.A. Trento</option>
                               <option>Umbria</option>
                               <option>Valle Aosta</option>
                               <option>Veneto</option>
