@@ -5,9 +5,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import InstructionDialog from "./dialogs/InstructionDialog";
-import SwipeDialog from "./dialogs/SwipeDialog";
-
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const backgroundShape = require("../images/shape.svg");
 
@@ -101,8 +101,8 @@ class Main extends Component {
   state = {
     learnMoredialog: false,
     getStartedDialog: false,
-    andamentoNazionaleObj: []
-
+    andamentoNazionaleObj: [],
+    andamentoFiltrato:[]
   };
 
   async getAndamentoNazionale() {
@@ -110,7 +110,8 @@ class Main extends Component {
      let response = await fetch('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json');
      let responseJson = await response.json();
      console.log(responseJson);
-     this.setState({andamentoNazionaleObj: responseJson})
+     this.setState({andamentoNazionaleObj: responseJson.reverse()})
+     this.setState({andamentoFiltrato: responseJson.slice(0, 10)})
     } catch(error) {
      console.error(error);
    }
@@ -143,22 +144,6 @@ class Main extends Component {
   componentDidMount() {
     this.getAndamentoNazionale();
   }
-
-  openDialog = event => {
-    this.setState({ learnMoredialog: true });
-  };
-
-  dialogClose = event => {
-    this.setState({ learnMoredialog: false });
-  };
-
-  openGetStartedDialog = event => {
-    this.setState({ getStartedDialog: true });
-  };
-
-  closeGetStartedDialog = event => {
-    this.setState({ getStartedDialog: false });
-  };
 
   render() {
     const { classes } = this.props;
@@ -194,7 +179,40 @@ class Main extends Component {
                 </Grid>
               </Grid>
 
-              {this.state.andamentoNazionaleObj.reverse().map((item, index, array) =>
+              <Grid container item xs={10}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <div>
+                    <br />
+                      <br />
+                      <FormControl className={classes.formControl}>
+                          <InputLabel htmlFor="select-region">Seleziona periodo</InputLabel>
+                          <Select
+                            native
+                            onChange={(e)=>{
+                              console.log(e);
+                              const filtered_arr = this.state.andamentoNazionaleObj.slice(0, e.target.value)
+
+                              this.setState({
+                                andamentoFiltrato: filtered_arr
+                              });
+                            }}
+                            inputProps={{
+                              name: 'time',
+                              id: 'select-time',
+                            }}
+                          >
+                              <option value={10} >Ultimi 10 giorni</option>
+                              <option value={30} >Ultimi 30 giorni</option>
+                              <option value={this.state.andamentoNazionaleObj.length - 1}>Tutti</option>
+                          </Select>
+                        </FormControl>
+                  </div>
+                </Paper>
+              </Grid>
+            </Grid>
+
+              {this.state.andamentoFiltrato.map((item, index, array) =>
                 <Grid container item xs={10}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
@@ -219,14 +237,6 @@ class Main extends Component {
               )}
             </Grid>
           </Grid>
-          <SwipeDialog
-            open={this.state.learnMoredialog}
-            onClose={this.dialogClose}
-          />
-          <InstructionDialog
-            open={this.state.getStartedDialog}
-            onClose={this.closeGetStartedDialog}
-          />
         </div>
       </React.Fragment>
     );

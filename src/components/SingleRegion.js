@@ -5,8 +5,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import InstructionDialog from "./dialogs/InstructionDialog";
-import SwipeDialog from "./dialogs/SwipeDialog";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -109,8 +107,6 @@ const styles = theme => ({
 
 class Main extends Component {
   state = {
-    learnMoredialog: false,
-    getStartedDialog: false,
     andamento: [],
     andamentoFiltrato:[]
 
@@ -154,25 +150,6 @@ class Main extends Component {
   componentDidMount() {
     this.getAndamento();
   }
-
-  openDialog = event => {
-    this.setState({ learnMoredialog: true });
-  };
-
-  dialogClose = event => {
-    this.setState({ learnMoredialog: false });
-  };
-
-  openGetStartedDialog = event => {
-    this.setState({ getStartedDialog: true });
-  };
-
-  closeGetStartedDialog = event => {
-    this.setState({ getStartedDialog: false });
-  };
-
-
-
 
   render() {
     const { classes } = this.props;
@@ -278,14 +255,6 @@ class Main extends Component {
               )}
             </Grid>
           </Grid>
-          <SwipeDialog
-            open={this.state.learnMoredialog}
-            onClose={this.dialogClose}
-          />
-          <InstructionDialog
-            open={this.state.getStartedDialog}
-            onClose={this.closeGetStartedDialog}
-          />
         </div>
       </React.Fragment>
     );
