@@ -9,7 +9,7 @@
     "@material-ui/styles": "^4.0.0",
     "gh-pages": "^2.0.1",
     "material-table": "^1.57.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "numeral": "^2.0.6",
     "opencollective-postinstall": "^2.0.2",
     "query-string": "^6.2.0",
